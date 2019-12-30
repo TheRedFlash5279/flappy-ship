@@ -134,22 +134,22 @@ namespace myTiles {
 `
     //% blockIdentity=images._tile
     export const tile7 = img`
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
+. . . . b b b b b c c c . . . . 
+. . . . b 6 6 6 6 6 6 c . . . . 
+. . . . b b b b b c c c . . . . 
+. . . . b b b b b c c c . . . . 
+. . . . b 6 6 6 6 6 6 c . . . . 
+. . . . . c b b b c c c . . . . 
+. . . . c 4 . b b c c c . . . . 
+. . . . . . . 6 6 6 6 c . . . . 
+. . . . c 4 . . b c c c . . . . 
+. . . . . c c . b c c c . . . . 
+. . . . . . 4 6 6 6 6 c . . . . 
+. . . 4 b b b b b c c c . . . . 
+. . c . b b b b b c c c . . . . 
+. . . . b 6 6 6 6 6 6 c . . . . 
+. . . . b b b b b c c c . . . . 
+. . . . b b b b b c c c . . . . 
 `
     //% blockIdentity=images._tile
     export const tile8 = img`
@@ -193,8 +193,13 @@ namespace myTiles {
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile9, function (sprite, location) {
     game.over(true)
 })
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
+    game.over(false)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    MC.setVelocity(30, -65)
+    pause(250)
+    MC.setVelocity(50, 50)
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile8, function (sprite, location) {
     game.over(false)
@@ -205,7 +210,8 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
     game.over(false)
 })
-let MC = sprites.create(img`
+let MC: Sprite = null
+MC = sprites.create(img`
 . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . 
