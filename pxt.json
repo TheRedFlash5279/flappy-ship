@@ -1,7 +1,8 @@
 {
     "name": "Flappy Ship ",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "animation": "*"
     },
     "description": "",
     "files": [
